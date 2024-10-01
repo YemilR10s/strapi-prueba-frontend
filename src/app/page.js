@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react';
-
 export default function Home() {
   const [formData, setFormData] = useState({
     nombrePersona: '',
@@ -28,8 +27,9 @@ export default function Home() {
     setError('');
     setSuccess(false);
 
+    
     try {
-      const res = await fetch(`${process.env.BASE_URL_API}/api/reservas`, {
+      const res = await fetch(`https://strapi-prueba-backend-production.up.railway.app/api/reservas`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export default function Home() {
       }
 
       setSuccess(true);
-     /*  setFormData({
+      /*  setFormData({
         nombrePersona: '',
         apellidoPersona: '',
         correoElectronico: '',
@@ -62,15 +62,16 @@ export default function Home() {
         fechaAndTime: '',
         personas: 1,
         ubicacion: 'Bello',
-      }); */
+        }); */
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
+    
   };
-
-  return (
+  
+    return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       <h1 className="text-3xl font-bold mb-6">Reserva tu mesa</h1>
       <form
