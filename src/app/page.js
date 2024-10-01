@@ -29,7 +29,7 @@ export default function Home() {
     setSuccess(false);
 
     try {
-      const res = await fetch('http://localhost:1337/api/reservas', {
+      const res = await fetch(`${process.env.BASE_URL_API}/api/reservas`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
